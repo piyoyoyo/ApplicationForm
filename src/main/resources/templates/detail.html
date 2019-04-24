@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+   <title>詳細ページ</title>
+</head>
+
+<body>
+        <!-- JavaScript -->
+        <script type="text/javascript">
+        </script>
+
+	<div class="container">
+      <h1>メニュー詳細</h1>
+      <div th:object="${menu}">
+        <div>
+          <label>ID</label>
+          <p th:text="*{id}"></p>
+        </div>
+        <div>
+          <label>メニュー</label>
+          <p th:text="*{menu}"></p>
+        </div>
+        <div>
+          <label>価格</label>
+          <p th:text="*{price}"></p>
+        </div>
+      </div>
+
+	<a class="btn" th:href="@{/{id}(id=*{id})}">カートに追加</a>
+
+      <div class="pull-right">
+        <a class="btn" href="/">一覧画面へ</a>
+      </div>
+    </div>
+</body>
+</html>

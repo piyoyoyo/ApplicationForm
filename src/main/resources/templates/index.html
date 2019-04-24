@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+        <title>List</title>
+</head>
+
+<body>
+        <!-- JavaScript -->
+        <script type="text/javascript">
+        </script>
+
+        <table>
+        <thead>
+        	<tr>
+                <th>メニュー</th>
+            	<th>価格</th>
+            </tr>
+        </thead>
+
+        <tbody>
+                <tr th:each="menu : ${menuList}" th:object="${menu}">
+                        <td th:text="*{menu}"></td>
+                        <td th:text="*{price}"></td>
+                        <td><a class="btn" th:href="@{/{id}(id=*{id})}">詳細</a></td>
+        </tbody>
+        </table>
+</body>
+</html>
