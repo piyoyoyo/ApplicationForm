@@ -2,35 +2,37 @@ package com.techscore.springboot;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "menu_list")
 public class Menu {
 	@Id
 	@Column(name="id")
-	private String id;
-	@Column(name="menu")
-	private String menu;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	@Column(name="name")
+	private String name;
 	@Column(name="price")
-	private String price;
+	private int price;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public String getMenu() {
-		return menu;
+	public String getName() {
+		return name;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMenu(String name) {
+		this.name = name;
 	}
-	public void setMenu(String menu) {
-		this.menu = menu;
-	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 }

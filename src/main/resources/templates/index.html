@@ -21,10 +21,10 @@
         </thead>
 
         <tbody>
-                <tr th:each="menu : ${menuList}" th:object="${menu}">
-                        <td th:text="*{menu}"></td>
-                        <td th:text="*{price}"></td>
-                        <td><a class="btn" th:href="@{/{id}(id=*{id})}">詳細</a></td>
+       	<tr th:each="menu : ${menuList}" th:object="${menu}">
+        	<td th:text="*{name}"></td>
+            <td th:text="*{price}"></td>
+            <td><a class="btn" th:href="@{/{id}(id=*{id})}">詳細</a></td>
         </tbody>
         </table>
 </body>

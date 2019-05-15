@@ -20,7 +20,7 @@
         </div>
         <div>
           <label>メニュー</label>
-          <p th:text="*{menu}"></p>
+          <p th:text="*{name}"></p>
         </div>
         <div>
           <label>価格</label>
@@ -28,11 +28,13 @@
         </div>
       </div>
 
-	<a class="btn" th:href="@{/{id}(id=*{id})}">カートに追加</a>
+	<a class="btn" th:href="@{/cart/{id}(id=*{id})}">
+	<input type="submit" value="カートに追加">
+	</a>
 
-      <div class="pull-right">
-        <a class="btn" href="/">一覧画面へ</a>
-      </div>
+		<div class="pull-right">
+   		<a class="btn" href="/">一覧画面へ</a>
+    	</div>
     </div>
 </body>
 </html>

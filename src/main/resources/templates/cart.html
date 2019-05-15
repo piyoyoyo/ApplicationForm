@@ -14,7 +14,33 @@
 
 	<div class="container">
 	<h1>カートの中身</h1>
+
+        <table>
+        <thead>
+        	<tr>
+                <th>メニュー</th>
+            	<th>価格</th>
+    			<th>数量</th>
+    			<th>購入日</th>
+            </tr>
+        </thead>
+
+        <tbody>
+       	<tr th:each="cart : ${cartForm}" th:object="${cart}">
+        	<td th:text="*{name}"></td>
+            <td th:text="*{price}"></td>
+            <td th:text="*{quantity}"></td>
+            <td th:text="*{inCartAt}"></td>
+        </tbody>
+        </table>
 	</div>
 
+	<a class="btn" th:href="@{/cart/{id}(id=*{id})}">
+	<input type="submit" value="同じ商品を追加">
+	</a>
+
+	<div class="pull-right">
+  		<a class="btn" href="/">一覧画面へ</a>
+   	</div>
 </body>
 </html>
