@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+     <meta http-equiv="Content-Script-Type" content="text/javascript">
+ 	 <title>購入者情報</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
+</head>
+<body>
+    <div class="uk-container uk-container-medium uk-width-2-3">
+        <form th:action="@{/showconfirm}" method="POST" accept-charset="utf-8" th:object="${confirmationForm}">
+            <fieldset class="uk-fieldset">
+
+                <legend class="uk-legend">購入者情報</legend>
+
+                <div class="uk-margin">
+                    <input id="name" class="uk-input" type="text" name="name" placeholder="買物　花子" th:field="*{name}">
+                    <span class="uk-text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </div>
+
+                <div class="uk-margin">
+                    <input id="address" class="uk-input" type="text" name="address" placeholder="東京都中央区日本橋1-1" th:field="*{address}">
+                    <span class="uk-text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+                </div>
+
+                <div class="uk-margin">
+                    <input id="phone" class="uk-input" type="text" name="phone" value="" placeholder="08012345678" th:field="*{phone}">
+                    <span class="uk-text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+                </div>
+
+            </fieldset>
+            <button class="uk-button uk-button-default" type="submit">購入確認</button>
+        </form>
+        <a href="/">一覧に戻る</a>
+    </div>
+  </body>
+
+        <!-- JavaScript -->
+        <script type="text/javascript">
+        </script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <title>購入確認画面</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
+</head>
+<body>
+    <div class="uk-container uk-container-large uk-width-2-3">
+        <h1 class="uk-margin-top uk-heading-primary">確認画面</h1>
+        <table th:object="${confirmationForm}">
+            <tbody>
+            <tr>
+                <th>お名前</th>
+                <td th:text="*{name}"></td>
+            </tr>
+            <tr>
+                <th>住所</th>
+                <td th:text="*{address}"></td>
+            </tr>
+            <tr>
+                <th>電話番号</th>
+                <td th:text="*{phone}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="/purchase">
+        <button class="uk-button uk-button-default" type="submit">確定</button>
+        </a>
+
+        <a th:href="@{/cart}">
+        <button class="uk-button uk-button-default">カートへ戻る</button>
+        </a>
+
+    </div>
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
+    </body>
+    <!-- JavaScript -->
+    <script type="text/javascript">
+    </script>
+</html>

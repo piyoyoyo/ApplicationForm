@@ -31,12 +31,16 @@
             <td th:text="*{price}"></td>
             <td th:text="*{quantity}"></td>
             <td th:text="*{inCartAt}"></td>
+            <!--  <td>
+            <a class="btn" th:href="@{/cart/{id}(id=*{id})}">
+			<input type="submit" value="同じ商品を追加"></a>
+			</td> -->
         </tbody>
         </table>
 	</div>
 
-	<a class="btn" th:href="@{/cart/{id}(id=*{id})}">
-	<input type="submit" value="同じ商品を追加">
+	<a class="btn" th:href="@{/shoppingconfirm}">
+	<input type="submit" value="購入確認ページへ">
 	</a>
 
 	<div class="pull-right">

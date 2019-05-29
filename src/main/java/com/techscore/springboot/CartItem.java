@@ -19,11 +19,11 @@ public class CartItem {
 	@Column(name="quantity")
 	private int quantity;
 	@Column(name="inCart")
-	private short inCart;
+	private boolean inCart;
 	@Column(name="inCartAt")
 	private LocalDate inCartAt;
 
-	public CartItem(Long menuId, int quantity, short inCart, LocalDate inCartAt) {
+	public CartItem(Long menuId, int quantity, boolean inCart, LocalDate inCartAt) {
 		this.menuId = menuId;
 		this.quantity = quantity;
 		this.inCart = inCart;
@@ -43,9 +43,14 @@ public class CartItem {
 	public int getQuantity() {
 		return quantity;
 	}
-	public short inCart() {
-		return inCart;
-	}
+
+    public boolean isInCart() {
+        return inCart;
+    }
+
+    public void setInCart(boolean inCart) {
+        this.inCart = inCart;
+    }
 	public LocalDate getInCartAt() {
 		return inCartAt;
 	}
@@ -53,9 +58,7 @@ public class CartItem {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public void setInCart(short inCart) {
-		this.inCart = inCart;
-	}
+
 	public void setInCartAt(LocalDate inCartAt) {
 		this.inCartAt = inCartAt;
 	}
