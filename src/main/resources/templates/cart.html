@@ -10,6 +10,15 @@
 <body>
         <!-- JavaScript -->
         <script type="text/javascript">
+        'use strict';
+        var quantity = document.getElementsByName(quantity);
+        var minus = document.getElementsByName(minus);
+        var plus = document.getElementsByName(plus);
+
+        function rewrite(quantity) {
+			quantity =
+       		return quantity;
+        }
         </script>
 
 	<div class="container">
@@ -29,12 +38,17 @@
        	<tr th:each="cart : ${cartForm}" th:object="${cart}">
         	<td th:text="*{name}"></td>
             <td th:text="*{price}"></td>
-            <td th:text="*{quantity}"></td>
+<!--             <td>
+            <a class="btn" th:href="#">
+             <a class="btn" th:href="@{/cart/{id}(id=*{id})}">
+			<input type="submit" name="minus" value="-" onclick="rewrite()"></a>
+			<input type="number" name="quantity" th:field="*{quantity}" size="2">
+			<a class="btn" th:href="#">
+             <a class="btn" th:href="@{/cart/{id}(id=*{id})}">
+			<input type="submit" name="plus" value="+" onclick="rewrite()"></a>
+            </td> -->
+			<td>数量</td>
             <td th:text="*{inCartAt}"></td>
-            <!--  <td>
-            <a class="btn" th:href="@{/cart/{id}(id=*{id})}">
-			<input type="submit" value="同じ商品を追加"></a>
-			</td> -->
         </tbody>
         </table>
 	</div>

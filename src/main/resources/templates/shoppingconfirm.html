@@ -13,23 +13,24 @@
 	<div class="container">
 			<form action="#" method="post">
 				<h2>購入者情報の入力</h2>
-				<div class="form-group row">
-					<label for="formLabel" class="col-sm-1 col-form-label">必須</label>
-					<label for="formName" class="col-sm-1 col-form-label">お名前</label>
-					<div class="col-sm-3">
-						<input type="text" class="form-control" placeholder="山田">
+					<div class="form-group row">
+						<label for="formName" class="col-xs-3 col-form-label"><span class="badge badge-danger">必須</span>　　お名前</label>
+						<div class="col-xs-4">
+							<input type="text" class="form-control" placeholder="山田">
+						</div>
+						<div class="col-xs-4">
+							<input type="text" class="form-control" placeholder="花子">
+						</div>
 					</div>
-					<div class="col-sm-3">
-						<input type="text" class="form-control" placeholder="花子">
-					</div>
-				</div>
+
+
 				<div class="form-group row">
-					<label for="formLabel" class="col-sm-1 col-form-label">必須</label>
-					<label for="formNameKana" class="col-sm-1 col-form-label">お名前（カナ）</label>
-					<div class="col-sm-3">
+					<label for="formLabel" class="col col-form-label">必須</label>
+					<label for="formNameKana" class="col col-form-label">お名前（カナ）</label>
+					<div class="col">
 						<input type="text" class="form-control" placeholder="ヤマダ">
 					</div>
-					<div class="col-sm-3">
+					<div class="col">
 						<input type="text" class="form-control" placeholder="ハナコ">
 					</div>
 				</div>
@@ -40,7 +41,7 @@
 						<input type="text" id="zipcode" placeholder="例：1000001">
 					</div>
 					<div class="col-sm-6">
-						<input type="button" id="search_btn" value="住所自動入力">
+						<input type="button" class="page-link text-dark d-inline-block" id="search_btn" value="住所自動入力">
 					</div>
 				</div>
 				<div class="form-group row">

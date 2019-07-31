@@ -11,4 +11,3 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 	public List<CartItem> findByInCartTrue();
 
 }
-
