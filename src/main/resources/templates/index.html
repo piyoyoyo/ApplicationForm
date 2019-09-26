@@ -1,32 +1,33 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <title>MISIN | メニュー一覧</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
 
-        <title>List</title>
-</head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>メニュー</th>
+          <th>価格</th>
+        </tr>
+      </thead>
 
-<body>
-        <!-- JavaScript -->
-        <script type="text/javascript">
-        </script>
-
-        <table>
-        <thead>
-        	<tr>
-                <th>メニュー</th>
-            	<th>価格</th>
-            </tr>
-        </thead>
-
-        <tbody>
-       	<tr th:each="menu : ${menuList}" th:object="${menu}">
-        	<td th:text="*{name}"></td>
-            <td th:text="*{price}"></td>
-            <td><a class="btn" th:href="@{/{id}(id=*{id})}">詳細</a></td>
-            <!--  <td><a class="btn" th:href="@{/cart/{id}(id=*{id})}"><input type="submit" value="カートに追加"></a> -->
-        </tbody>
-        </table>
-</body>
+      <tbody>
+        <tr th:each="menu : ${menuList}" th:object="${menu}">
+          <td th:text="*{name}"></td>
+          <td th:text="*{price}"></td>
+          <td>
+            <a class="btn" th:href="@{/cart/{id}(id=*{id})}">
+              <button class="btn" type="button">詳細</button>
+            </a>
+          </td>
+          <!--  <td><a class="btn" th:href="@{/cart/{id}(id=*{id})}"><input type="submit" value="カートに追加"></a> -->
+          </tr>
+      </tbody>
+    </table>
+  </body>
 </html>

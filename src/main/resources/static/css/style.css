@@ -1,0 +1,10 @@
+.container {
+  width: 950px;
+  margin: 0 auto;
+}
+span {
+  margin-right: 10px;
+}
+.required {
+  color: red;
+}

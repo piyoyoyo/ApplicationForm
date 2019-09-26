@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+     <meta http-equiv="Content-Script-Type" content="text/javascript">
+ 	 <title>購入者情報</title>
+	 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <script type="text/javascript" th:src="@{js/jquery-3.4.1.min.js}" src="../static/js/jquery-3.4.1.min.js"></script>
+	 
+	 <script type="text/javascript" th:src="@{js/tailor.js}" src="../static/js/tailor.js"></script>
+</head>
+<body>
+	<div class="container">
+			<form action="#" method="post">
+				<h2>購入者情報の入力</h2>
+					<div class="form-group row">
+						<label for="formName" class="col-xs-3 col-form-label"><span class="badge badge-danger">必須</span>　　お名前</label>
+						<div class="col-xs-4">
+							<input type="text" class="form-control" placeholder="山田">
+						</div>
+						<div class="col-xs-4">
+							<input type="text" class="form-control" placeholder="花子">
+						</div>
+					</div>
+
+
+				<div class="form-group row">
+					<label for="formLabel" class="col col-form-label">必須</label>
+					<label for="formNameKana" class="col col-form-label">お名前（カナ）</label>
+					<div class="col">
+						<input type="text" class="form-control" placeholder="ヤマダ">
+					</div>
+					<div class="col">
+						<input type="text" class="form-control" placeholder="ハナコ">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="formLabel" class="col-sm-1 col-form-label btn-danger">必須</label>
+					<label for="formNameKana" class="col-sm-1 col-form-label">郵便番号</label>
+					<div class="col-sm-3">
+						<input type="text" id="zipcode" placeholder="例：1000001">
+					</div>
+					<div class="col-sm-6">
+						<input type="button" class="page-link text-dark d-inline-block" id="search_btn" value="住所自動入力">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="formLabel" class="col-sm-1 col-form-label">必須</label>
+					<label for="formPref" class="col-sm-1 col-form-label">都道府県</label>
+				
+					<td class="inputBlock_tableDetail">
+						<select name="pref_id" id="pref">
+							<option value="0" selected>選択  ▼</option>
+							<option value="1">北海道</option>
+							<option value="2">青森県</option>
+							<option value="3">岩手県</option>
+							<option value="4">宮城県</option>
+							<option value="5">秋田県</option>
+							<option value="6">山形県</option>
+							<option value="7">福島県</option>
+							<option value="8">茨城県</option>
+							<option value="9">栃木県</option>
+							<option value="10">群馬県</option>
+							<option value="11">埼玉県</option>
+							<option value="12">千葉県</option>
+							<option value="13">東京都</option>
+							<option value="14">神奈川県</option>
+							<option value="15">新潟県</option>
+							<option value="16">富山県</option>
+							<option value="17">石川県</option>
+							<option value="18">福井県</option>
+							<option value="19">山梨県</option>
+							<option value="20">長野県</option>
+							<option value="21">岐阜県</option>
+							<option value="22">静岡県</option>
+							<option value="23">愛知県</option>
+							<option value="24">三重県</option>
+							<option value="25">滋賀県</option>
+							<option value="26">京都府</option>
+							<option value="27">大阪府</option>
+							<option value="28">兵庫県</option>
+							<option value="29">奈良県</option>
+							<option value="30">和歌山県</option>
+							<option value="31">鳥取県</option>
+							<option value="32">島根県</option>
+							<option value="33">岡山県</option>
+							<option value="34">広島県</option>
+							<option value="35">山口県</option>
+							<option value="36">徳島県</option>
+							<option value="37">香川県</option>
+							<option value="38">愛媛県</option>
+							<option value="39">高知県</option>
+							<option value="40">福岡県</option>
+							<option value="41">佐賀県</option>
+							<option value="42">長崎県</option>
+							<option value="43">熊本県</option>
+							<option value="44">大分県</option>
+							<option value="45">宮崎県</option>
+							<option value="46">鹿児島県</option>
+							<option value="47">沖縄県</option>
+						</select>
+					</td>
+				</div>
+
+
+                <div class="uk-margin">
+                    <input id="name" class="uk-input" type="text" name="name" placeholder="買物　花子" th:field="*{name}">
+                    <span class="uk-text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </div>
+					<button type="submit" class="btn btn-primary">Sign in</button>
+				  </form>
+
+
+
+		<form action="#" method="post">
+			<h2>購入者情報の入力</h2>
+			<div class="inputBlock">
+				<table class="inputBlock_table">
+					<tbody>
+						<!-- <tr>
+							<th class="inputBlock_tableHeading">
+								<span class="formContent_label formContent_label_required">必須</span>
+								"お名前"
+							</th>
+							<td class="inputBlock_tableDetail">
+								<input type="text" class="last_name formName" name="last_name" placeholder="買物" maxlength="30">
+								<input type="text" class="first_name formName" name="first_name" placeholder="花子" maxlength="30">
+							</td>
+						</tr>
+						<tr>
+							<th class="inputBlock_tableHeading">
+								<span class="formContent_label formContent_label_required">必須</span>
+								"お名前（カナ）"
+							</th>
+							<td class="inputBlock_tableDetail">
+								<input type="text" class="last_kana formName" name="last_kana" placeholder="カイモノ" maxlength="30">
+								<input type="text" class="first_kana formName" name="first_kana" placeholder="ハナコ" maxlength="30">
+							</td>
+						</tr> -->
+
+						<!-- <tr>
+							<th class="inputBlock_tableHeading">
+								<span class="formContent_label formContent_label_required">必須</span>
+								"郵便番号"
+							</th>
+							<td class="inputBlock_tableDetail">
+								<input type="text" id="zipcode" name="zipcode" placeholder="例：1000001" maxlength="7">
+								<input type="button" id="search_btn" value="住所自動入力">
+								<p>※7桁の半角数字で入力してください</p>
+							</td>
+						</tr> -->
+
+						<tr>
+							<th class="inputBlock_tableHeading">
+								<span class="formContent_label formContent_label_required">必須</span>
+								"都道府県"
+							</th>
+							<td class="inputBlock_tableDetail">
+							<select name="pref_id" id="pref">
+								<option value="0" selected>選択  ▼</option>
+								<option value="1">北海道</option>
+								<option value="2">青森県</option>
+								<option value="3">岩手県</option>
+								<option value="4">宮城県</option>
+								<option value="5">秋田県</option>
+								<option value="6">山形県</option>
+								<option value="7">福島県</option>
+								<option value="8">茨城県</option>
+								<option value="9">栃木県</option>
+								<option value="10">群馬県</option>
+								<option value="11">埼玉県</option>
+								<option value="12">千葉県</option>
+								<option value="13">東京都</option>
+								<option value="14">神奈川県</option>
+								<option value="15">新潟県</option>
+								<option value="16">富山県</option>
+								<option value="17">石川県</option>
+								<option value="18">福井県</option>
+								<option value="19">山梨県</option>
+								<option value="20">長野県</option>
+								<option value="21">岐阜県</option>
+								<option value="22">静岡県</option>
+								<option value="23">愛知県</option>
+								<option value="24">三重県</option>
+								<option value="25">滋賀県</option>
+								<option value="26">京都府</option>
+								<option value="27">大阪府</option>
+								<option value="28">兵庫県</option>
+								<option value="29">奈良県</option>
+								<option value="30">和歌山県</option>
+								<option value="31">鳥取県</option>
+								<option value="32">島根県</option>
+								<option value="33">岡山県</option>
+								<option value="34">広島県</option>
+								<option value="35">山口県</option>
+								<option value="36">徳島県</option>
+								<option value="37">香川県</option>
+								<option value="38">愛媛県</option>
+								<option value="39">高知県</option>
+								<option value="40">福岡県</option>
+								<option value="41">佐賀県</option>
+								<option value="42">長崎県</option>
+								<option value="43">熊本県</option>
+								<option value="44">大分県</option>
+								<option value="45">宮崎県</option>
+								<option value="46">鹿児島県</option>
+								<option value="47">沖縄県</option>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<th class="inputBlock_tableHeading">
+								<span class="formContent_label formContent_label_required">必須</span>
+								"市区郡"
+							</th>
+							<td class="inputBlock_tableDetail">
+								<input type="text" id="address2" class="formName" name="city" placeholder="例：○○市" maxlength="30">
+							</td>
+						</tr>
+						<tr>
+							<th class="inputBlock_tableHeading">
+								<span class="formContent_label formContent_label_required">必須</span>
+								"町名"
+							</th>
+							<td class="inputBlock_tableDetail">
+								<input type="text" id="address3" class="formName" name="town" placeholder="町名" maxlength="30">
+							</td>
+						</tr>
+						<tr>
+							<th class="inputBlock_tableHeading">
+								<span class="formContent_label formContent_label_required">必須</span>
+								"番地"
+							</th>
+							<td class="inputBlock_tableDetail">
+								<input type="text" class="formName" name="house_num" placeholder="番地" maxlength="30">
+							</td>
+						</tr>
+						<tr>
+							<th class="inputBlock_tableHeading">
+								<span class="formContent_label formContent_label">任意</span>
+								"建物名"
+							</th>
+							<td class="inputBlock_tableDetail">
+								<input type="text" class="formName" name="building" placeholder="建物名" maxlength="30">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<button id="btn" class="uk-button uk-button-default" type="submit">購入確認</button>
+		</form>
+		<a href="/">一覧に戻る</a>
+	</div>
+
+    
+</body>
+</html>

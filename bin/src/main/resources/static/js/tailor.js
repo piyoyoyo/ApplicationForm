@@ -1,12 +1,6 @@
 $(function() {
-  $.fn.autoKana('#lastName', '#lastNameKana', {
-    katakana : true
-  });
-  $.fn.autoKana('#firstName', '#firstNameKana', {
-    katakana : true
-  });
   // テキストボックスにフォーカス時、フォームの背景色を変化
-  $('#lastName, #firstName, #lastNameKana, #firstNameKana')
+  $('#name, #address, #phone')
     .focusin(function(e) {
       $(this).css('background-color', '#ffc');
       console.log(e);
@@ -19,13 +13,12 @@ $(function() {
   let validAddress = false
   let validPhone = false
 
-  $('#lastName', '#lastNameKana', '#firstName', '#firstNameKana')
+  $('#name')
 	.focusout(function(e) {
 		if($(this).val().length>20) {
 			validName = false
 			$('#msg-name').text("20文字以内で入力してください").css('color', 'red');
 		} else if($(this).val()=="") {
-			validName = false
 			$('#msg-name').text("必須項目です").css('color', 'red');
 		} else {
 			$('#msg-name').text("");

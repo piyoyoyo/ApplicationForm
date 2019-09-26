@@ -1,64 +1,57 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <title>MISIN | カートの中身</title>
+  </head>
 
-        <title>カートの中身</title>
-</head>
+  <body>
+    <!-- JavaScript -->
+    <script type="text/javascript">
+      'use strict';
+      var quantity = document.getElementsByName(quantity);
+      var minus = document.getElementsByName(minus);
+      var plus = document.getElementsByName(plus);
 
-<body>
-        <!-- JavaScript -->
-        <script type="text/javascript">
-        'use strict';
-        var quantity = document.getElementsByName(quantity);
-        var minus = document.getElementsByName(minus);
-        var plus = document.getElementsByName(plus);
+      function rewrite(quantity) {
+        quantity = return quantity;
+      }
+    </script>
 
-        function rewrite(quantity) {
-			quantity =
-       		return quantity;
-        }
-        </script>
-
-	<div class="container">
-	<h1>カートの中身</h1>
-
+    <div class="container">
+      <h1>カートの中身</h1>
         <table>
-        <thead>
-        	<tr>
-                <th>メニュー</th>
-            	<th>価格</th>
-    			<th>数量</th>
-    			<th>購入日</th>
+          <thead>
+            <tr>
+              <th>メニュー</th>
+              <th>価格</th>
+              <th>数量</th>
+              <th>購入日</th>
             </tr>
-        </thead>
+          </thead>
 
-        <tbody>
-       	<tr th:each="cart : ${cartForm}" th:object="${cart}">
-        	<td th:text="*{name}"></td>
-            <td th:text="*{price}"></td>
-<!--             <td>
-            <a class="btn" th:href="#">
-             <a class="btn" th:href="@{/cart/{id}(id=*{id})}">
-			<input type="submit" name="minus" value="-" onclick="rewrite()"></a>
-			<input type="number" name="quantity" th:field="*{quantity}" size="2">
-			<a class="btn" th:href="#">
-             <a class="btn" th:href="@{/cart/{id}(id=*{id})}">
-			<input type="submit" name="plus" value="+" onclick="rewrite()"></a>
-            </td> -->
-			<td>数量</td>
-            <td th:text="*{inCartAt}"></td>
-        </tbody>
-        </table>
-	</div>
+          <tbody>
+            <tr th:each="cart : ${cartForm}" th:object="${cart}">
+              <td th:text="*{name}"></td>
+              <td th:text="*{price}"></td>
+              <td>数量</td>
+              <td th:text="*{inCartAt}"></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
 
-	<a class="btn" th:href="@{/shoppingconfirm}">
-	<input type="submit" value="購入確認ページへ">
-	</a>
+    <div class="pull-left">
+      <a class="btn" th:href="@{/shoppingconfirm}">
+        <button class="btn" type="button" >お届け先の入力に進む</button>
+      </a>
+    </div>
 
-	<div class="pull-right">
-  		<a class="btn" href="/">一覧画面へ</a>
-   	</div>
-</body>
+    <div class="pull-right">
+      <a class="btn" href="/">
+        <button class="btn" type="button">一覧画面へ戻る</button>
+      </a>
+    </div>
+  </body>
 </html>

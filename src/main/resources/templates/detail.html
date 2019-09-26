@@ -1,17 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta http-equiv="Content-Script-Type" content="text/javascript">
-   <title>詳細ページ</title>
-</head>
+    <title>MISIN | 詳細ページ</title>
+		<link rel="stylesheet" href="../static/css/style.css">
+  </head>
 
-<body>
-        <!-- JavaScript -->
-        <script type="text/javascript">
-        </script>
-
-	<div class="container">
+  <body>
+    <div class="container">
       <h1>メニュー詳細</h1>
       <div th:object="${menu}">
         <div>
@@ -28,13 +25,14 @@
         </div>
       </div>
 
-	<a class="btn" th:href="@{/cart/{id}(id=*{id})}">
-	<input type="submit" value="カートに追加">
-	</a>
-
-		<div class="pull-right">
-   		<a class="btn" href="/">一覧画面へ戻る</a>
-    	</div>
+      <a class="btn" th:href="@{/cart/{id}(id=*{id})}">
+        <button class="btn" type="button">カートに追加</button>
+      </a>
+      <div class="pull-right">
+        <a class="btn" href="/">
+          <button class="btn" type="button">一覧画面へ戻る</button>
+        </a>
+      </div>
     </div>
-</body>
+  </body>
 </html>

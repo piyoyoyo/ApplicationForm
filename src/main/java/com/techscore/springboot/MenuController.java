@@ -2,20 +2,24 @@ package com.techscore.springboot;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestMethod;;
 
 @Controller
 public class MenuController {
@@ -99,7 +103,7 @@ public class MenuController {
     public String shoppingConfirm(ConfirmationForm form, Model model){
         return "shoppingconfirm";
     }
-    ////////////////////　購入者情入力画面へここまで　//////////////////////////
+    ////////////////////　購入者情報入力画面へここまで　//////////////////////////
 
     ////////////////////　購入確認画面へ　//////////////////////////
 
@@ -107,7 +111,29 @@ public class MenuController {
     public String showConfirm(@Validated @ModelAttribute("confirmationForm") ConfirmationForm form, BindingResult result, Model model){
 
         if (result.hasErrors()) {
-            model.addAttribute("validationError", "値が入力されていません");
+        	List<String> message = new ArrayList<>();
+        	Map<Integer, String> map = new HashMap<>();
+
+
+			for (FieldError fieldError : result.getFieldErrors()){
+				String fieldId = fieldError.getField();
+				DisplayColumn dc = DisplayColumn.getByFieldId(fieldId);
+				String displayName = dc.getDisplayName();
+				int sort = dc.getSort();
+				//並び替え用のマップにエラーメッセージを詰める
+				map.put(sort, displayName + "は" + fieldError.getDefaultMessage());
+			}
+
+			//MapのKeyで昇順にソートする
+			Object[] mapkey = map.keySet().toArray();
+	        Arrays.sort(mapkey);
+
+	        //ソートしたMapのvalueをメッセージのリストに詰める
+	        for (Integer nKey : map.keySet()){
+	            message.add(map.get(nKey));
+	        }
+
+            model.addAttribute("validationError", message);
             return shoppingConfirm(form, model);
         }
 
@@ -130,7 +156,7 @@ public class MenuController {
     }
 
     // カートにもどる
-    @GetMapping("/cart")   
+    @GetMapping("/cart")
     public String showCartFromConfirmationForm(Model model) {
 	  	List<CartItem>  inCartItemList = cartItemRepository.findByInCartTrue();
 		List<Menu> menuList = menuListRepository.findAll();
